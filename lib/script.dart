@@ -76,7 +76,12 @@ Future getToken(String username, String pass) async {
       }
       toBeStored += "*";
     }
-    var listAttendance = soup.getElementById("div3").children[0].children[0].children[1].children;
+    var listAttendance = soup
+        .getElementById("div3")
+        .children[0]
+        .children[0]
+        .children[1]
+        .children;
     // print(listAttendance);
 
     for (int i = 0; i < listAttendance.length; i++) {

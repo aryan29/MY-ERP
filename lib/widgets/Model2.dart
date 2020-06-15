@@ -1,5 +1,5 @@
-class Subject2{
-  String code, tname, tclasses, present,absent,percent;
+class Subject2 {
+  String code, tname, tclasses, present, absent, percent;
   Subject2(String s) {
     int c = 0;
     code = "";
@@ -18,7 +18,7 @@ class Subject2{
       else if (c == 1)
         tname += s[i];
       else if (c == 2)
-         tclasses+= s[i];
+        tclasses += s[i];
       else if (c == 3)
         present += s[i];
       else if (c == 4)

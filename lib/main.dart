@@ -67,8 +67,8 @@ void callbackDispatcher() async {
           'channel id', 'channel NAME', 'CHANNEL DESCRIPTION');
       var ios1 = new IOSNotificationDetails();
       var platform = new NotificationDetails(android1, ios1);
-      await flutterLocalNotificationsPlugin.show(0, 'Marks Seem to be changed',
-          'Check out yours new marks by clicking me', platform,
+      await flutterLocalNotificationsPlugin.show(
+          0, 'Marks updated!', 'Click to check it', platform,
           payload: "Anything you say");
     } else if (attendanceNew != attendanceOld && attendanceNew != "") {
       prefs.setString("attendance", attendanceNew);
@@ -76,8 +76,11 @@ void callbackDispatcher() async {
           'channel id', 'channel NAME', 'CHANNEL DESCRIPTION');
       var ios1 = new IOSNotificationDetails();
       var platform = new NotificationDetails(android1, ios1);
-      await flutterLocalNotificationsPlugin.show(0, 'Attendance Seem to be changed',
-          'Check out yours new attendance by clicking me', platform,
+      await flutterLocalNotificationsPlugin.show(
+          0,
+          'Attendance Seem to be changed',
+          'Check out yours new attendance by clicking me',
+          platform,
           payload: "Anything you say");
     } else {
       var android1 = new AndroidNotificationDetails(
