@@ -1,0 +1,673 @@
+
+
+
+<!doctype html>
+<html lang="en">
+<head id="Head1">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131521698-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-131521698-1');
+    </script>
+    <!--Let browser know website is optimized for mobile-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>
+  Birla Institute of Technology
+</title><link rel="shortcut icon" href="IMAGES/favicon.ico" type="image/x-icon" /><link rel="icon" href="IMAGES/favicon.ico" type="image/x-icon" />
+    <!-- Bootstrap -->
+    <link href="cssnew1/bootstrap.min.css" rel="stylesheet" /><link href="cssnew1/form-style.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--   FONTS   -->
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        .box-1 {
+            top: 10px;
+        }
+
+        .card-panel {
+            margin-top: 10px;
+            padding-bottom: 0px;
+        }
+    </style>
+
+       <!-- Script for Browser validation -->
+    <script type="text/javascript">
+        (function () {
+            'use strict';
+
+            var module = {
+                options: [],
+                header: [navigator.platform, navigator.userAgent, navigator.appVersion, navigator.vendor, window.opera],
+                dataos: [
+                    { name: 'Windows Phone', value: 'Windows Phone', version: 'OS' },
+                    { name: 'Windows', value: 'Win', version: 'NT' },
+                    { name: 'iPhone', value: 'iPhone', version: 'OS' },
+                    { name: 'iPad', value: 'iPad', version: 'OS' },
+                    { name: 'Kindle', value: 'Silk', version: 'Silk' },
+                    { name: 'Android', value: 'Android', version: 'Android' },
+                    { name: 'PlayBook', value: 'PlayBook', version: 'OS' },
+                    { name: 'BlackBerry', value: 'BlackBerry', version: '/' },
+                    { name: 'Macintosh', value: 'Mac', version: 'OS X' },
+                    { name: 'Linux', value: 'Linux', version: 'rv' },
+                    { name: 'Palm', value: 'Palm', version: 'PalmOS' }
+                ],
+                databrowser: [
+                    { name: 'Chrome', value: 'Chrome', version: 'Chrome' },
+                    { name: 'Firefox', value: 'Firefox', version: 'Firefox' },
+                    { name: 'Safari', value: 'Safari', version: 'Version' },
+                    { name: 'Internet Explorer', value: 'MSIE', version: 'MSIE' },
+                    { name: 'Opera', value: 'Opera', version: 'Opera' },
+                    { name: 'BlackBerry', value: 'CLDC', version: 'CLDC' },
+                    { name: 'Mozilla', value: 'Mozilla', version: 'Mozilla' }
+                ],
+                init: function () {
+                    var agent = this.header.join(' '),
+                        os = this.matchItem(agent, this.dataos),
+                        browser = this.matchItem(agent, this.databrowser);
+
+                    return { os: os, browser: browser };
+                },
+                matchItem: function (string, data) {
+                    var i = 0,
+                        j = 0,
+                        html = '',
+                        regex,
+                        regexv,
+                        match,
+                        matches,
+                        version;
+
+                    for (i = 0; i < data.length; i += 1) {
+                        regex = new RegExp(data[i].value, 'i');
+                        match = regex.test(string);
+                        if (match) {
+                            regexv = new RegExp(data[i].version + '[- /:;]([\\d._]+)', 'i');
+                            matches = string.match(regexv);
+                            version = '';
+                            if (matches) { if (matches[1]) { matches = matches[1]; } }
+                            if (matches) {
+                                matches = matches.split(/[._]+/);
+                                for (j = 0; j < matches.length; j += 1) {
+                                    if (j === 0) {
+                                        version += matches[j] + '.';
+                                    } else {
+                                        version += matches[j];
+                                    }
+                                }
+                            } else {
+                                version = '0';
+                            }
+                            return {
+                                name: data[i].name,
+                                version: parseFloat(version)
+                            };
+                        }
+                    }
+                    return { name: 'unknown', version: 0 };
+                }
+            };
+
+            var e = module.init(),
+                debug = '';
+
+            // debug += 'os.name = ' + e.os.name + '<br/>';
+            //  debug += 'os.version = ' + e.os.version + '<br/>';
+            debug += 'browser.name = ' + e.browser.name + '<br/>';
+
+            if ((e.browser.name) == 'Chrome') {
+                if ((e.browser.version) >= 70) {
+                    //    alert('You are using Updated Browser')
+                }
+                else {
+                    alert("The current version of your browser is not compatible, please update your browser.");
+                    setTimeout(function () {
+                        window.location.href = "https://www.google.com/chrome/";
+                    }, 300);
+
+                }
+            }
+
+            if ((e.browser.name) == 'Firefox') {
+                if ((e.browser.version) >= 65) {
+                    //    alert('You are using Updated Browser')
+                }
+                else {
+                    alert("The current version of your browser is not compatible, please update your browser.");
+                    setTimeout(function () {
+                        window.location.href = "https://www.mozilla.org/en-US/firefox/download/thanks/?scene=2#download-fx";
+                    }, 300);
+                }
+            }
+            debugger;
+            if ((e.browser.name) == 'Internet Explorer') {
+                if ((e.browser.version) >= 10) {
+                    // alert('You are using Updated Browser')
+                }
+                else {
+                    alert("The current version of your browser is not compatible, please update your browser.");
+                    setTimeout(function () {
+                        window.location.href = "https://www.microsoft.com/en-in/download/internet-explorer.aspx";
+                    }, 300);
+                }
+            }
+            debug += 'browser.version = ' + e.browser.version + '<br/>';
+            debug += '<br/>';
+            //    debug += 'navigator.userAgent = ' + navigator.userAgent + '<br/>';
+            //   debug += 'navigator.appVersion = ' + navigator.appVersion + '<br/>';
+            //  debug += 'navigator.platform = ' + navigator.platform + '<br/>';
+            //  debug += 'navigator.vendor = ' + navigator.vendor + '<br/>';
+            //  document.getElementById('log').innerHTML = debug;
+        }());
+    </script>
+    <!-- end -->
+
+
+</head>
+<body onload='DetectBrowser()'>
+    <form name="frmDefault" method="post" action="./iitmsv4eGq0RuNHb0G5WbhLmTKLmTO7YBcJ4RHuXxCNPvuIw=?%2f" onsubmit="javascript:return WebForm_OnSubmit();" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnSubmit')" id="frmDefault">
+<div>
+<input type="hidden" name="Script_water_HiddenField" id="Script_water_HiddenField" value="" />
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTIwMTMzMTcwODUPZBYCAgMPZBYCAjUPDxYCHgdWaXNpYmxlaGRkGAIFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYBBQxJbWFnZUJ1dHRvbjEFD0NhcHRjaGFDb250cm9sMQ8FJGE3M2ZkNDgyLTc2N2ItNGFlZi05NDhjLWRlODdjODM3ZDRlOWSsnOZ7aJNBLH5MFoP4UAOemH+PrQ==" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['frmDefault'];
+if (!theForm) {
+    theForm = document.frmDefault;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=b1Y0qzb4P5-RtYbUBovJXK-crJHeMuzKtZTXJaljaAhNoyy9L5D6iCuV4trFPrIDhHrzCxQYaM2mInSmWK6PGCPB5Cw1&amp;t=637103544297649313" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=vhDJqUZUlagRxRD3FbCYNzON_cHY-8srgD71HmBwkod-Y0BnzarE006WEY4VHOQIthmkL2VTs6wtFt7uQFeNEoDGOL7i2QlWn535eBBTrpSyfq8iXFIdrKHwT6gIBVWZcfYaVvRwfpmsI6lGGFvnymP-gHY1&amp;t=5f65bdf4" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=z7tT3MUsTUyXRClgZTr1y4SUkMSzUegHGSCWQ7ZoH6R6BJUq4yKYMIr_KPeLt64lL3V5udYK7ENdxtpYfCt87WajfD7M2ikO1IOjPoW8e6WeKOsxTLV9HmXD-AfQ2_aDuC9jV_5eeaCAFxQ1NoF24iYfbVLzKfcExPl66_qZNGkTsOxu0&amp;t=ffffffffecf19baa" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=1wkkr82WLLJ5uforlvYUGo14U_5HljhbFmcA_6XH3H9pHB-uZmwHOH4pa6JIhChsNST-gpPKYmKIuWdippi6IlRyoG_jJn6FoY34wNRZkSKjBOXVx8vQ5getDsXgvR2ehZd0JvO6SkH-hfifQz8bJHRWOnIsri9b8J-jYkSmF7H8IQY20&amp;t=ffffffffecf19baa" type="text/javascript"></script>
+<script src="/default.aspx?_TSM_HiddenField_=Script_water_HiddenField&amp;_TSM_CombinedScripts_=%3b%3bAjaxControlToolkit%2c+Version%3d3.0.20229.20843%2c+Culture%3dneutral%2c+PublicKeyToken%3d28f01b0e84b6d53e%3aen-US%3a3b7d1b28-161f-426a-ab77-b345f2c428f5%3ae2e86ef9%3a1df13a87%3a8ccd9c1b" type="text/javascript"></script>
+<script src="/WebResource.axd?d=6fKL_owQu_q29O8yjp0UmEDdRJO_XXNn_lIIXScEBv1cZOUyxlQi9Am5uCyf3OKC8PGUGOvIGFOjJ9YJsWCBFJXP--s1&amp;t=637103544297649313" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+null;if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div>
+
+  <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334" />
+</div>
+        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('Script_water', 'frmDefault', [], [], [], 90, '');
+//]]>
+</script>
+
+        <div class="form-padding" style="padding: -100px">
+
+<Marquee id="divmarquee" scrollamount="4" onmouseover="this.stop();" onmouseout="this.start();" style="color:white;font-size:18px;margin-top:5px" behavior="alternate">
+
+
+                  Note : For First Year Students to login into <b>ERP </b> use your Roll No or Application Id
+
+             </Marquee>
+            <div class="form-section">
+                <div class="form-header form-group">
+                    <img src="imgnew1/BITMesradefault-new.png" class="img-responsive" alt="logo" />
+                </div>
+                <div class="form-group">
+                    <input name="txt_username" type="text" id="txt_username" class="form-control" placeholder="Username" />
+                    <span id="req_username" style="color:Red;display:none;"></span>
+                </div>
+                <div class="form-group">
+                    <input name="txt_password" type="password" id="txt_password" class="form-control" placeholder="Password" />
+                    <span id="req_password" style="color:Red;display:none;"></span>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6">
+
+                            <input name="txtcaptcha" type="text" id="txtcaptcha" class="form-control" />
+                            <input type="hidden" name="TextBoxWatermarkExtender3_ClientState" id="TextBoxWatermarkExtender3_ClientState" />
+                            <span id="RequiredFieldValidator4" style="color:Red;display:none;"></span>
+                        </div>
+                        <div class="col-sm-5 col-xs-5">
+                            <img src="GenerateCaptcha.ashx" style="width: 130px; height: 35px; margin-left: -20px" />
+                            <input type="image" name="ImageButton1" id="ImageButton1" src="IMAGES/refresh.gif" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ImageButton1&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" style="height:20px;width:20px;border-width:0px;margin-top: -150px; margin-left: 120px; margin-bottom: 20px" />
+                        </div>
+                    </div>
+
+                    <a id="btnSubmit" class="btn btn-primary" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnSubmit&quot;, &quot;&quot;, true, &quot;login&quot;, &quot;&quot;, false, true))"> LOGIN</a>
+                    <h5><span>OR</span></h5>
+                    <div class="text-center form-footer">
+                        <span><a id="lbtForgePass" class="btn btn-danger" data-toggle="modal" data-target="#myModal" onclick="lbtForgePass_Click"><span>Forgot Password</span></a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Reset Password</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <div class="form-group col-md-12">
+                                <input name="txtName" type="text" id="txtName" tabindex="1" class="form-control" />
+                                <span id="RequiredFieldValidator2" style="color:Red;display:none;"></span>
+                                <input type="hidden" name="TextBoxWatermarkExtender2_ClientState" id="TextBoxWatermarkExtender2_ClientState" />
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <input name="txt_emailid" type="text" id="txt_emailid" tabindex="2" class="form-control" />
+                                <span id="RequiredFieldValidator1" style="color:Red;display:none;"></span>
+                                <span id="RegularExpressionValidator1" style="color:Red;display:none;"></span>
+                                <input type="hidden" name="TextBoxWatermarkExtender1_ClientState" id="TextBoxWatermarkExtender1_ClientState" />
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <input name="txt_captcha" type="text" id="txt_captcha" tabindex="2" class="form-control" />
+                                <input type="hidden" name="txt_captcha_TextBoxWatermarkExtender_ClientState" id="txt_captcha_TextBoxWatermarkExtender_ClientState" />
+                                <span id="RequiredFieldValidator3" style="color:Red;display:none;"></span>
+
+                                <div style='background-color:White;font-size:Smaller;'><img src="CaptchaImage.axd?guid=a73fd482-767b-4aef-948c-de87c837d4e9" border='0' width=110 height=40></div>
+                                <br />
+                                <input type="submit" name="btn_Submit" value="Submit" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btn_Submit&quot;, &quot;&quot;, true, &quot;login1&quot;, &quot;&quot;, false, false))" id="btn_Submit" class="btn btn-primary" />
+                                <input type="submit" name="btnCancel" value="Cancel" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnCancel&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btnCancel" class="btn btn-info" href="#!" />
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <p class="text-center">
+                            </p>
+                            <p>
+                                <div id="ValidationSummary1" style="color:Red;display:none;">
+
+</div>
+                                <p>
+
+                                </p>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $(".input-lg").focus(function () {
+                    $(this).css("border", "1px solid #004080");
+                });
+                $(".input-lg").blur(function () {
+                    $(this).css({ "border": "1px solid #004080", "padding": "10px", "transition": ".3s ease" });
+                });
+            });
+        </script>
+
+
+
+
+        <div class="compatiblity">
+            <div class="container-fluid">
+            <ul class="list-inline">
+                <li>Site Compatible with</li>
+                <li>
+                    <img src="IMAGES/internet-explorer.png" alt="internet-explorer">
+                    Internet Explorer 10+ ,</li>
+                <li>
+                    <img src="IMAGES/chrome.png" alt="chrome">
+                    Google Chrome 70+ ,</li>
+                <li>
+                    <img src="IMAGES/firefox.png" alt="firefox">
+                    Firefox 65+</li>
+            </ul>
+                </div>
+        </div>
+
+
+        <div class="row" style="margin-bottom: 5px; display: none">
+            <div class="col s12 m6">
+                <div class="card-panel">
+                    <div style="border: 0px solid black; width: 180px">
+                        <img src="asset/img/JSS_LOGO.jpg" class="img-responsive" style="height: 150px;" />
+                    </div>
+                    <div style="border: 0px solid black; margin-left: 170px; margin-top: -120px; width: 600px">
+                        <span style="font-family: Arial Narrow, sans-serif; font-size: 30px; color: #862d2d"><b>JSS SCIENCE & TECHNOLOGY </b></span>
+                        <span style="font-family: Arial Narrow, sans-serif; margin-left: 125px; font-size: 30px; color: #862d2d"><b>UNIVERSITY</b></span>
+                    </div>
+                    <div class="badge" style="margin-top: 60px">
+                        <h5>Vision</h5>
+                    </div>
+                    <p>
+                        To establish JSS S&T University  as  a leader in education,
+          research and technology on the international arena,To provide the students a universal platform to launch their careers,
+         vesting the industry and research community with skilled and professional  workforce.
+                    </p>
+                    <div class="badge">
+                        <h5>Mission</h5>
+                    </div>
+                    <p>
+                        Education, research and social outreach are the core doctrines of JSS S&T University that are responsible for accomplishment of  in-depth knowledge base,
+        professional skill and  innovative technologies required to improve the socio economic conditions of the country.
+                    </p>
+                    <div class="collection">
+                        <div class="col s9">
+                            <strong>Contact Us</strong>
+                            <address>
+                                JSS Science and Technology University (Formerly SJCE), JSS TI Campus, Mysuru 570006,INDIA.<br />
+                                Telephone:0821- 2548285, 86<br />
+                                E-mail: jss.st.university@gmail.com
+                            </address>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                </div>
+
+            </div>
+
+
+
+            <style>
+                .valid {
+                    padding-left: 60px;
+                    margin: -10px;
+                    border-top-right-radius: 10px;
+                    width: 250px;
+                }
+            </style>
+            <div class="col s12 m6">
+                <div class="card-panel">
+                    <div id="login" class="col-md-12">
+                        <legend class="legend">LOGIN</legend>
+                        <div id="login-form" class="col-md-12">
+                            <div class="row">
+                                <div class="input-field col s2"></div>
+                                <div class="input-field col s8">
+                                    <div class="input-group">
+                                        <i class="material-icons prefix" style="border-right: 1px solid black; height: 30px;">account_circle</i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s2"></div>
+                                <div class="input-field col s8">
+                                    <div class="input-group">
+                                        <i class="tiny material-icons prefix" style="border-right: 1px solid black; height: 30px;">lock</i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s2"></div>
+                                <div class="input-field col s8">
+                                    <i class="material-icons prefix"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s2"></div>
+                                <div class="input-field col s4" style="margin-top: -3px">
+                                </div>
+                                <div class="input-field col s6" style="margin-top: -3px">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s1"></div>
+                                <div class="input-field col s4" style="margin-top: -20px">
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                    </div>
+                </div>
+                <style>
+                    #login {
+                        max-width: 700px;
+                        min-width: 400px;
+                        margin: 12px auto;
+                    }
+
+                    #login-form {
+                        background-color: rgba(247, 247, 245, 0.30);
+                        border: solid 1px rgba(0,0,0,.2);
+                        border-bottom-left-radius: 40px;
+                        border-bottom-right-radius: 40px;
+                        box-shadow: 0 1px 12px rgba(0,0,0,.5);
+                        padding: 50px 30px 20px;
+                    }
+
+                    .legend {
+                        background: #67c3e5;
+                        padding: 15px;
+                        color: #fff;
+                        font-size: 25px;
+                        border-top-left-radius: 40px;
+                        border-top-right-radius: 40px;
+                        text-align: center;
+                    }
+                </style>
+            </div>
+            <div id="val_summary" style="color:Red;display:none;">
+
+</div>
+
+        </div>
+        <script>
+
+
+            $(document).ready(function () {
+                // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+                $('.modal-trigger').leanModal();
+            });
+
+            $('.datepicker').pickadate({
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15 // Creates a dropdown of 15 years to control year
+            });
+
+
+        </script>
+        <!--Import jQuery before materialize.js-->
+
+
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("ValidationSummary1"), document.getElementById("val_summary"));
+var Page_Validators =  new Array(document.getElementById("req_username"), document.getElementById("req_password"), document.getElementById("RequiredFieldValidator4"), document.getElementById("RequiredFieldValidator2"), document.getElementById("RequiredFieldValidator1"), document.getElementById("RegularExpressionValidator1"), document.getElementById("RequiredFieldValidator3"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var req_username = document.all ? document.all["req_username"] : document.getElementById("req_username");
+req_username.controltovalidate = "txt_username";
+req_username.errormessage = "Username Required !";
+req_username.display = "None";
+req_username.validationGroup = "login";
+req_username.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+req_username.initialvalue = "";
+var req_password = document.all ? document.all["req_password"] : document.getElementById("req_password");
+req_password.controltovalidate = "txt_password";
+req_password.errormessage = "Password Required !";
+req_password.display = "None";
+req_password.validationGroup = "login";
+req_password.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+req_password.initialvalue = "";
+var RequiredFieldValidator4 = document.all ? document.all["RequiredFieldValidator4"] : document.getElementById("RequiredFieldValidator4");
+RequiredFieldValidator4.controltovalidate = "txtcaptcha";
+RequiredFieldValidator4.errormessage = "Captcha Character not Matched!";
+RequiredFieldValidator4.display = "None";
+RequiredFieldValidator4.validationGroup = "login";
+RequiredFieldValidator4.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator4.initialvalue = "";
+var RequiredFieldValidator2 = document.all ? document.all["RequiredFieldValidator2"] : document.getElementById("RequiredFieldValidator2");
+RequiredFieldValidator2.controltovalidate = "txtName";
+RequiredFieldValidator2.errormessage = "Username Required !";
+RequiredFieldValidator2.display = "None";
+RequiredFieldValidator2.validationGroup = "login1";
+RequiredFieldValidator2.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator2.initialvalue = "";
+var RequiredFieldValidator1 = document.all ? document.all["RequiredFieldValidator1"] : document.getElementById("RequiredFieldValidator1");
+RequiredFieldValidator1.controltovalidate = "txt_emailid";
+RequiredFieldValidator1.errormessage = "Email Id Required !";
+RequiredFieldValidator1.display = "None";
+RequiredFieldValidator1.validationGroup = "login1";
+RequiredFieldValidator1.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator1.initialvalue = "";
+var RegularExpressionValidator1 = document.all ? document.all["RegularExpressionValidator1"] : document.getElementById("RegularExpressionValidator1");
+RegularExpressionValidator1.controltovalidate = "txt_emailid";
+RegularExpressionValidator1.errormessage = "Enter Valid Email ID";
+RegularExpressionValidator1.display = "None";
+RegularExpressionValidator1.validationGroup = "login1";
+RegularExpressionValidator1.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+RegularExpressionValidator1.validationexpression = "\\w+([-+.\']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+var RequiredFieldValidator3 = document.all ? document.all["RequiredFieldValidator3"] : document.getElementById("RequiredFieldValidator3");
+RequiredFieldValidator3.controltovalidate = "txt_captcha";
+RequiredFieldValidator3.errormessage = "Captcha Character not Matched!";
+RequiredFieldValidator3.display = "None";
+RequiredFieldValidator3.validationGroup = "login1";
+RequiredFieldValidator3.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator3.initialvalue = "";
+var ValidationSummary1 = document.all ? document.all["ValidationSummary1"] : document.getElementById("ValidationSummary1");
+ValidationSummary1.showmessagebox = "True";
+ValidationSummary1.showsummary = "False";
+ValidationSummary1.displaymode = "List";
+ValidationSummary1.validationGroup = "login1";
+var val_summary = document.all ? document.all["val_summary"] : document.getElementById("val_summary");
+val_summary.showmessagebox = "True";
+val_summary.showsummary = "False";
+val_summary.displaymode = "List";
+val_summary.validationGroup = "login";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+
+(function(id) {
+    var e = document.getElementById(id);
+    if (e) {
+        e.dispose = function() {
+            Array.remove(Page_ValidationSummaries, document.getElementById(id));
+        }
+        e = null;
+    }
+})('ValidationSummary1');
+
+(function(id) {
+    var e = document.getElementById(id);
+    if (e) {
+        e.dispose = function() {
+            Array.remove(Page_ValidationSummaries, document.getElementById(id));
+        }
+        e = null;
+    }
+})('val_summary');
+WebForm_AutoFocus('btnSubmit');
+document.getElementById('req_username').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('req_username'));
+}
+
+document.getElementById('req_password').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('req_password'));
+}
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.TextBoxWatermarkBehavior, {"ClientStateFieldID":"TextBoxWatermarkExtender3_ClientState","WatermarkText":"Enter Captcha","id":"TextBoxWatermarkExtender3"}, null, null, $get("txtcaptcha"));
+});
+
+document.getElementById('RequiredFieldValidator4').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('RequiredFieldValidator4'));
+}
+
+document.getElementById('RequiredFieldValidator2').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('RequiredFieldValidator2'));
+}
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.TextBoxWatermarkBehavior, {"ClientStateFieldID":"TextBoxWatermarkExtender2_ClientState","WatermarkText":"Enter Username","id":"TextBoxWatermarkExtender2"}, null, null, $get("txtName"));
+});
+
+document.getElementById('RequiredFieldValidator1').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('RequiredFieldValidator1'));
+}
+
+document.getElementById('RegularExpressionValidator1').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('RegularExpressionValidator1'));
+}
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.TextBoxWatermarkBehavior, {"ClientStateFieldID":"TextBoxWatermarkExtender1_ClientState","WatermarkText":"Enter Registered Email Id","id":"TextBoxWatermarkExtender1"}, null, null, $get("txt_emailid"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.TextBoxWatermarkBehavior, {"ClientStateFieldID":"txt_captcha_TextBoxWatermarkExtender_ClientState","WatermarkText":"Enter following Captcha","id":"txt_captcha_TextBoxWatermarkExtender"}, null, null, $get("txt_captcha"));
+});
+
+document.getElementById('RequiredFieldValidator3').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('RequiredFieldValidator3'));
+}
+//]]>
+</script>
+</form>
+
+    <script type="text/javascript">
+        var screenHeight = screen.availHeight;
+
+    </script>
+    <script>
+
+    </script>
+</body>
+</html>
+
