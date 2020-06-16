@@ -17,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    print("Building homescreen");
     return Scaffold(
       body: Container(
           width: double.infinity,
@@ -86,7 +87,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.bold)))),
                 ),
-              )
+              ),
+              // FlatButton(
+              //     onPressed: () {
+              //       Workmanager.registerOneOffTask("1", "simple")
+              //           .whenComplete(() => print("Completed"));
+              //     },
+              //     child: Text("Press Me"))
             ],
           )),
     );

@@ -26,7 +26,7 @@ void main() async {
   await Workmanager.initialize(
       callbackDispatcher, // The top level function, aka callbackDispatcher
       isInDebugMode:
-          true // If enabled it will post a notification whenever the task is running. Handy for debugging tasks
+          false // If enabled it will post a notification whenever the task is running. Handy for debugging tasks
       );
   runApp(MyApp());
 }
@@ -36,9 +36,9 @@ const simpleTask = "simpleTask";
 const simplePeriodicTask = "simplePeriodicTask";
 var time;
 
-void callbackDispatcher() async {
-  print("Coming to Callback dispatcher");
-  await Workmanager.executeTask((task, inputData) async {
+void callbackDispatcher() {
+  // print("Coming to Callback dispatcher");
+  Workmanager.executeTask((task, inputData) async {
     final storage = new FlutterSecureStorage();
     String username = await storage.read(key: "username");
     String password = await storage.read(key: "password");
@@ -82,7 +82,8 @@ void callbackDispatcher() async {
           'Check out yours new attendance by clicking me',
           platform,
           payload: "Anything you say");
-    } else {
+    }
+    else {
       var android1 = new AndroidNotificationDetails(
           'channel id', 'channel NAME', 'CHANNEL DESCRIPTION');
       var ios1 = new IOSNotificationDetails();
@@ -104,7 +105,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  @override
   checkIsLoggedIn() async {
     final storage = new FlutterSecureStorage();
     if (await storage.read(key: "username") != null &&
