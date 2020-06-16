@@ -15,6 +15,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   retrieve() async {
     Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     SharedPreferences prefs = await _prefs;
+     await prefs.reload();
     String s = prefs.getString("attendance");
     return {"items": processText(s), "time": prefs.getString("time")};
   }
@@ -33,26 +34,92 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
     return li;
   }
 
-  Container getWidget(int i,List<Subject2>li) {
+  Container getWidget(int i, List<Subject2> li) {
     return Container(
       decoration: BoxDecoration(
- color: Colors.blue[100],
- borderRadius: BorderRadius.circular(20),
- border:Border.all(color:Colors.white,width:5)
-
-      ),
-      padding:EdgeInsets.all(10),
+          color: Colors.blue[100],
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: Colors.white, width: 5)),
+      padding: EdgeInsets.all(10),
       margin: EdgeInsets.all(10),
-
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Text("Subject Code ${li[i].code}",textAlign: TextAlign.left,),
-          Text("Teacher Name ${li[i].tname}",textAlign: TextAlign.left,),
-          Text("Total Classes ${li[i].tclasses}",textAlign: TextAlign.left,),
-          Text("Present ${li[i].present}",textAlign: TextAlign.left,),
-          Text("Absent ${li[i].absent}",textAlign: TextAlign.left,),
-          Text("Percentage ${li[i].percent}",textAlign: TextAlign.left,)
+          Padding(padding: EdgeInsets.all(5.0)),
+          Row(
+            children: <Widget>[
+              Text("Subject code: ",
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+              Expanded(
+                child: Text(
+                  "${li[i].code}",
+                ),
+              ),
+            ],
+          ),
+          Padding(padding: EdgeInsets.all(5.0)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("Teacher: ", style: TextStyle(fontWeight: FontWeight.bold)),
+              Expanded(
+                child: Text(
+                  "${li[i].tname}",
+                ),
+              ),
+            ],
+          ),
+          Padding(padding: EdgeInsets.all(5.0)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("Total classes: ",
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+              Expanded(
+                child: Text(
+                  "${li[i].tclasses}",
+                ),
+              ),
+            ],
+          ),
+          Padding(padding: EdgeInsets.all(5.0)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("Present: ", style: TextStyle(fontWeight: FontWeight.bold)),
+              Expanded(
+                child: Text(
+                  "${li[i].present}",
+                ),
+              ),
+            ],
+          ),
+          Padding(padding: EdgeInsets.all(5.0)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("Absent: ", style: TextStyle(fontWeight: FontWeight.bold)),
+              Expanded(
+                child: Text(
+                  "${li[i].absent}",
+                ),
+              ),
+            ],
+          ),
+          Padding(padding: EdgeInsets.all(5.0)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("Percentage: ",
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+              Expanded(
+                child: Text(
+                  "${li[i].percent}",
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -62,7 +129,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color:Colors.black,
+          color: Colors.black,
           //Retrieve Marks from Shared Preferences String
           //And show them here
           child: FutureBuilder(
@@ -73,12 +140,11 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                   return Container(
                       child: ListView(
                     children: <Widget>[
-                      for(int i=0;i<li.length;i++)
-                      getWidget(i, li)
+                      for (int i = 0; i < li.length; i++) getWidget(i, li)
                     ],
                   ));
                 } else {
-                  return Container();
+                  return Container(child:Center(child: CircularProgressIndicator()));
                 }
               })),
     );

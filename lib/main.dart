@@ -26,7 +26,7 @@ void main() async {
   await Workmanager.initialize(
       callbackDispatcher, // The top level function, aka callbackDispatcher
       isInDebugMode:
-          true // If enabled it will post a notification whenever the task is running. Handy for debugging tasks
+          false // If enabled it will post a notification whenever the task is running. Handy for debugging tasks
       );
   runApp(MyApp());
 }
@@ -36,9 +36,9 @@ const simpleTask = "simpleTask";
 const simplePeriodicTask = "simplePeriodicTask";
 var time;
 
-void callbackDispatcher() async {
-  print("Coming to Callback dispatcher");
-  await Workmanager.executeTask((task, inputData) async {
+void callbackDispatcher() {
+  // print("Coming to Callback dispatcher");
+  Workmanager.executeTask((task, inputData) async {
     final storage = new FlutterSecureStorage();
     String username = await storage.read(key: "username");
     String password = await storage.read(key: "password");
@@ -50,6 +50,7 @@ void callbackDispatcher() async {
     String attendanceOld = "";
 
     time = new DateTime.now();
+    print("$time inside callback");
     SharedPreferences prefs = await _prefs;
     prefs.setString("time", time.toString());
     if (prefs.containsKey("marks")) {
@@ -67,8 +68,8 @@ void callbackDispatcher() async {
           'channel id', 'channel NAME', 'CHANNEL DESCRIPTION');
       var ios1 = new IOSNotificationDetails();
       var platform = new NotificationDetails(android1, ios1);
-      await flutterLocalNotificationsPlugin.show(0, 'Marks Seem to be changed',
-          'Check out yours new marks by clicking me', platform,
+      await flutterLocalNotificationsPlugin.show(
+          0, 'Marks updated!', 'Click to check it', platform,
           payload: "Anything you say");
     } else if (attendanceNew != attendanceOld && attendanceNew != "") {
       prefs.setString("attendance", attendanceNew);
@@ -76,8 +77,11 @@ void callbackDispatcher() async {
           'channel id', 'channel NAME', 'CHANNEL DESCRIPTION');
       var ios1 = new IOSNotificationDetails();
       var platform = new NotificationDetails(android1, ios1);
-      await flutterLocalNotificationsPlugin.show(0, 'Attendance Seem to be changed',
-          'Check out yours new attendance by clicking me', platform,
+      await flutterLocalNotificationsPlugin.show(
+          0,
+          'Attendance Seem to be changed',
+          'Check out yours new attendance by clicking me',
+          platform,
           payload: "Anything you say");
     } else {
       var android1 = new AndroidNotificationDetails(
@@ -101,7 +105,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  @override
   checkIsLoggedIn() async {
     final storage = new FlutterSecureStorage();
     if (await storage.read(key: "username") != null &&
