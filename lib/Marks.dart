@@ -16,8 +16,11 @@ class _MarksScreenState extends State<MarksScreen> {
   retrieve() async {
     Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     SharedPreferences prefs = await _prefs;
+    await prefs.reload();
     String s = prefs.getString("marks");
-    return {"items": processText(s), "time": prefs.getString("time")};
+    String time = prefs.getString("time");
+    // print(time);
+    return {"items": processText(s), "time": time};
   }
 
   List<Subject> processText(String s) {

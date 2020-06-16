@@ -50,6 +50,7 @@ void callbackDispatcher() {
     String attendanceOld = "";
 
     time = new DateTime.now();
+    print("$time inside callback");
     SharedPreferences prefs = await _prefs;
     prefs.setString("time", time.toString());
     if (prefs.containsKey("marks")) {
@@ -82,8 +83,7 @@ void callbackDispatcher() {
           'Check out yours new attendance by clicking me',
           platform,
           payload: "Anything you say");
-    }
-    else {
+    } else {
       var android1 = new AndroidNotificationDetails(
           'channel id', 'channel NAME', 'CHANNEL DESCRIPTION');
       var ios1 = new IOSNotificationDetails();
