@@ -15,6 +15,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   retrieve() async {
     Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     SharedPreferences prefs = await _prefs;
+     await prefs.reload();
     String s = prefs.getString("attendance");
     return {"items": processText(s), "time": prefs.getString("time")};
   }
@@ -42,7 +43,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
       padding: EdgeInsets.all(10),
       margin: EdgeInsets.all(10),
       child: Column(
-     
+
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Padding(padding: EdgeInsets.all(5.0)),
@@ -143,7 +144,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                     ],
                   ));
                 } else {
-                  return Container();
+                  return Container(child:Center(child: CircularProgressIndicator()));
                 }
               })),
     );

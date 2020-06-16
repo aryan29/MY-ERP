@@ -142,7 +142,7 @@ class _MarksScreenState extends State<MarksScreen> {
                     },
                   );
                 } else {
-                  return Container();
+                  return Container(child:Center(child: CircularProgressIndicator()));
                 }
               })),
     );
