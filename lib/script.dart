@@ -95,8 +95,6 @@ Future getToken(String username, String pass) async {
         }
         toBeStored2 += "*";
       }
-      // print(toBeStored2);
-
       return {"marks": toBeStored, "attendance": toBeStored2};
     } catch (e) {
       if (tries < maxTries) {
