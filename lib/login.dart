@@ -76,7 +76,8 @@ class _LoginPageState extends State<LoginPage> {
                                 await SharedPreferences.getInstance();
                             SharedPreferences prefs = await _prefs;
                             await prefs.setString("marks", res["marks"]);
-                            await prefs.setString("attendance", res["attendance"]);
+                            await prefs.setString(
+                                "attendance", res["attendance"]);
                             final storage = new FlutterSecureStorage();
                             await storage.write(
                                 key: "username", value: username);

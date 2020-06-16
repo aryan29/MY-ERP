@@ -1,6 +1,7 @@
 //Main.dart will not decide on which screen he should send
 //the app based on whether person is logged in or not
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'widgets/Model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -33,26 +34,84 @@ class _MarksScreenState extends State<MarksScreen> {
     return li;
   }
 
-  Container getWidget(int i,List<Subject>li) {
+  Container getWidget(int i, List<Subject> li) {
     return Container(
       decoration: BoxDecoration(
- color: Colors.blue[100],
- borderRadius: BorderRadius.circular(20),
- border:Border.all(color:Colors.white,width:5)
-
+        borderRadius: BorderRadius.circular(20.0),
+        border: Border.all(color: Colors.white, width: 5),
+        color: Colors.blue[100],
       ),
-      padding:EdgeInsets.all(10),
+      padding: EdgeInsets.all(10),
       margin: EdgeInsets.all(10),
-
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        // crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Text("Subject Code ${li[i].code}",textAlign: TextAlign.left,),
-          Text("Subject Name ${li[i].name}",textAlign: TextAlign.left,),
-          Text("Internal1 ${li[i].internal1}",textAlign: TextAlign.left,),
-          Text("Midsem ${li[i].midsem}",textAlign: TextAlign.left,),
-          Text("Internal2 ${li[i].internal2}",textAlign: TextAlign.left,),
-          Text("End Sem Marks ${li[i].end}",textAlign: TextAlign.left,)
+          Padding(padding: EdgeInsets.all(10.0)),
+          Row(
+            children: <Widget>[
+              Text("Subject code: ",
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+              Text(
+                "${li[i].code}",
+              ),
+            ],
+          ),
+          Padding(padding: EdgeInsets.all(10.0)),
+
+          // constraints: BoxConstraints(maxWidth: 200),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("Subject: ", style: TextStyle(fontWeight: FontWeight.bold)),
+              Expanded(
+                child: Text(
+                  "${li[i].name}",
+                ),
+              ),
+            ],
+          ),
+
+          Padding(padding: EdgeInsets.all(10.0)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Text("Internal",
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text(
+                    "${li[i].internal1}",
+                  ),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text("Midsem", style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text(
+                    "${li[i].midsem}",
+                  ),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text("Internal2",
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text(
+                    "${li[i].internal2}",
+                  ),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text("Endsem", style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text(
+                    "${li[i].end}",
+                  ),
+                ],
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -62,7 +121,7 @@ class _MarksScreenState extends State<MarksScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color:Colors.black,
+          color: Colors.black,
           //Retrieve Marks from Shared Preferences String
           //And show them here
           child: FutureBuilder(
@@ -70,13 +129,15 @@ class _MarksScreenState extends State<MarksScreen> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   List<Subject> li = snapshot.data['items'];
-                  return Container(
-                      child: ListView(
-                    children: <Widget>[
-                      for(int i=0;i<li.length;i++)
-                      getWidget(i, li)
-                    ],
-                  ));
+                  return ListView.builder(
+                    // crossAxisCount: 1,
+                    itemCount: li.length,
+                    padding: const EdgeInsets.all(10.0),
+
+                    itemBuilder: (context, index) {
+                      return getWidget(index, li);
+                    },
+                  );
                 } else {
                   return Container();
                 }

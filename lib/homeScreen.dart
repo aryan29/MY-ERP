@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Container(
           width: double.infinity,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               InkWell(
@@ -39,50 +39,53 @@ class _HomeScreenState extends State<HomeScreen> {
                       MaterialPageRoute(
                           builder: (context) => AttendanceScreen()));
                 },
-                child: Container(
-                    height: 200,
-                    width: 200,
-                    decoration: BoxDecoration(
-                      color: Colors.orange,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black,
-                            spreadRadius: 1.0,
-                            blurRadius: 5.0)
-                      ],
-                      borderRadius: BorderRadius.circular(150),
-                    ),
-                    child: Center(
-                        child: Text("View Attendance",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold)))),
+                child: Card(
+                  child: Container(
+                      height: 80,
+                      width: 300,
+                      decoration: BoxDecoration(
+                          color: Colors.orange,
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black,
+                                spreadRadius: 1.0,
+                                blurRadius: 5.0)
+                          ],
+                          borderRadius: BorderRadius.circular(10.0)),
+                      child: Center(
+                          child: Text("View Attendance",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold)))),
+                ),
               ),
               InkWell(
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => MarksScreen()));
                 },
-                child: Container(
-                    height: 200,
-                    width: 200,
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black,
-                            spreadRadius: 1.0,
-                            blurRadius: 5.0)
-                      ],
-                      borderRadius: BorderRadius.circular(150),
-                    ),
-                    child: Center(
-                        child: Text("View Marks",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold)))),
+                child: Card(
+                  child: Container(
+                      height: 80,
+                      width: 300,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black,
+                              spreadRadius: 1.0,
+                              blurRadius: 5.0)
+                        ],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                          child: Text("View Marks",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold)))),
+                ),
               )
             ],
           )),
