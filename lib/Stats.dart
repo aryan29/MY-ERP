@@ -75,9 +75,14 @@ class _StatsState extends State<Stats> {
       if (obj.cint2 != 0) {
         obj.ainternal2 = (obj.internal2 / obj.cint2);
       }
+      if(check(li[i].internal1))
       obj.internal1 = double.tryParse(li[i].internal1);
+      if(check(li[i].midsem))
       obj.midsem = double.tryParse(li[i].midsem);
+      if(check(li[i].internal2))
+
       obj.internal2 = double.tryParse(li[i].internal2);
+      if(check(li[i].end))
       obj.end = double.tryParse(li[i].end);
       //Work for one subject done
       print("Work done");
@@ -103,6 +108,7 @@ class _StatsState extends State<Stats> {
 
   Container getWidget(int i, List<SubjectStat> li) {
     return Container(
+
       height: 400,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
@@ -137,6 +143,9 @@ class _StatsState extends State<Stats> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        decoration:BoxDecoration(
+          color:Colors.black
+        ),
           child: FutureBuilder(
         future: retrieve(),
         builder: (context, snapshot) {

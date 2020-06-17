@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 80,
                       width: 300,
                       decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: Colors.orange,
                         boxShadow: [
                           BoxShadow(
                               color: Colors.black,
@@ -118,17 +118,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fontWeight: FontWeight.bold)))),
                 ),
               ),
-              FlatButton(
-                  onPressed: () {
-                    Workmanager.registerOneOffTask("1", "simple")
-                        .whenComplete(() => print("Completed"));
-                  },
-                  child: Text("Press Me")),
-              FlatButton(
-                  child: Text("Debug"),
-                  onPressed: () {
-                    print(Uri.encodeQueryComponent("BTECH/10594/18"));
-                  })
+              // FlatButton(
+              //     onPressed: () {
+              //       Workmanager.registerOneOffTask("1", "simple")
+              //           .whenComplete(() => print("Completed"));
+              //     },
+              //     child: Text("Press Me")),
+              // FlatButton(
+              //     child: Text("Debug"),
+              //     onPressed: () {
+              //       print(Uri.encodeQueryComponent("BTECH/10594/18"));
+              //     })
             ],
           )),
     );
