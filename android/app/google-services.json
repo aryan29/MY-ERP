@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1024529826283",
+    "firebase_url": "https://erpapp-320c5.firebaseio.com",
+    "project_id": "erpapp-320c5",
+    "storage_bucket": "erpapp-320c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024529826283:android:cb00c7889c38fdbf3959ae",
+        "android_client_info": {
+          "package_name": "com.example.ERPApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1024529826283-b08b27be8h619qva6sehqu3bps6sg1ku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3cYwl3B43LyrzfGufWH5Q2ci4pdZmPbM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1024529826283-b08b27be8h619qva6sehqu3bps6sg1ku.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
