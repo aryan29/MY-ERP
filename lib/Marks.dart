@@ -42,7 +42,13 @@ class _MarksScreenState extends State<MarksScreen> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
         border: Border.all(color: Colors.white, width: 5),
-        color: Colors.blue[100],
+        // color: Colors.blue[100],
+        gradient: LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment(0.8, 0.0), // 10% of the width, so there are ten blinds.
+      colors: [const Color(0xFFFFFFEE), Colors.blue[300]], // whitish to gray
+      tileMode: TileMode.clamp,
+        )
       ),
       padding: EdgeInsets.all(10),
       margin: EdgeInsets.all(10),
@@ -124,6 +130,7 @@ class _MarksScreenState extends State<MarksScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+
           color: Colors.black,
           //Retrieve Marks from Shared Preferences String
           //And show them here
@@ -132,17 +139,42 @@ class _MarksScreenState extends State<MarksScreen> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   List<Subject> li = snapshot.data['items'];
-                  return ListView.builder(
-                    // crossAxisCount: 1,
-                    itemCount: li.length,
-                    padding: const EdgeInsets.all(10.0),
+                  return CustomScrollView(
+                       slivers:[
+                         SliverAppBar(
+                           automaticallyImplyLeading: false,
+                          //  leading: Container(),
+                           iconTheme: IconThemeData(color:Colors.black),
+                           expandedHeight: 150,
+                           pinned:true,
+                           floating: false,
+                           backgroundColor: Colors.black,
+                           flexibleSpace: FlexibleSpaceBar(
+                        title:RichText(
+                             text:TextSpan(children:[
+                               TextSpan(text:"MY ",style:TextStyle(color:Colors.blue,fontWeight: FontWeight.bold,fontSize: 18)),
+                               TextSpan(text:"ERP",style:TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 18)),
+                             ]
+                             )
 
-                    itemBuilder: (context, index) {
-                      return getWidget(index, li);
-                    },
+                           ),
+                           ),
+
+                         ),
+                         SliverList(
+                        // crossAxisCount: 1,
+                        delegate: SliverChildBuilderDelegate(
+                        // padding: const EdgeInsets.all(10.0),
+                          (context, index) {
+                            return getWidget(index, li);
+                          },
+                          childCount: li.length,
+                        )),
+                       ]
                   );
                 } else {
-                  return Container(child:Center(child: CircularProgressIndicator()));
+                  return Container(
+                      child: Center(child: CircularProgressIndicator()));
                 }
               })),
     );
