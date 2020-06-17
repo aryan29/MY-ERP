@@ -1,3 +1,4 @@
+import 'package:ERPApp/blocs/bloc1.dart';
 import 'package:html/parser.dart' show parse;
 import 'package:html/dom.dart';
 import 'dart:async';
@@ -6,12 +7,15 @@ import 'dart:io';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'widgets/Model.dart';
 
 Future getToken(String username, String pass) async {
   int tries = 0;
   int maxTries = 3;
   doAgain(String username, String pass) async {
     try {
+      print("Try Number $tries");
       String toBeStored = "";
       String toBeStored2 = "";
       Dio dio = new Dio();
@@ -98,6 +102,7 @@ Future getToken(String username, String pass) async {
       return {"marks": toBeStored, "attendance": toBeStored2};
     } catch (e) {
       if (tries < maxTries) {
+        print("Coming to Try Again");
         tries++;
         doAgain(username, pass);
       }
@@ -107,5 +112,43 @@ Future getToken(String username, String pass) async {
     }
   }
 
-  return doAgain(username, pass);
+  var res = await doAgain(username, pass);
+  if (res != "") await storeData(username, res);
+  return res;
+}
+
+storeData(String username, var res) async {
+  List<Subject> li = processText(res["marks"]);
+  DatabaseReference database;
+  username = username.replaceAll("/", "");
+  for (int i = 0; i < li.length; i++) {
+    database = FirebaseDatabase.instance
+        .reference()
+        .child("test")
+        .child(li[i].name)
+        .child(username);
+    await database.remove();
+    await database.push().set({
+      "Internal1": li[i].internal1,
+      "Midesem": li[i].midsem,
+      "Internal2": li[i].internal2,
+      "Endsem": li[i].end
+    });
+  }
+  print("FireBase Updation Completed");
+  return;
+}
+
+List<Subject> processText(String s) {
+  String s1 = "";
+  List<Subject> li = [];
+  for (int i = 0; i < s.length; i++) {
+    if (s[i] == "*") {
+      li.add(new Subject(s1));
+      s1 = "";
+      continue;
+    }
+    s1 += s[i];
+  }
+  return li;
 }
