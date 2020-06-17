@@ -44,22 +44,22 @@ class _StatsState extends State<Stats> {
           // print("here");
           obj.midsem += double.tryParse(yo['Midesem']);
           obj.cmid++;
-          // obj.mmidsem = max(obj.mmidsem, double.tryParse(yo['Midesem']));
+          obj.mmidsem = max(obj.mmidsem, double.tryParse(yo['Midesem']));
         }
         if (check(yo['Endsem'])) {
           obj.end += double.tryParse(yo['Endsem']);
           obj.cend++;
-          // obj.mend = max(obj.mend, double.tryParse(yo['Endsem']));
+          obj.mend = max(obj.mend, double.tryParse(yo['Endsem']));
         }
         if (check(yo['Internal1'])) {
           obj.internal1 += double.tryParse(yo['Internal1']);
           obj.cint1++;
-          // obj.minternal1 = max(obj.minternal1, double.tryParse(yo['Internal1']));
+          obj.minternal1 = max(obj.minternal1, double.tryParse(yo['Internal1']));
         }
         if (check(yo['Internal2'])) {
           obj.internal2 += double.tryParse(yo['Internal2']);
           obj.cint2++;
-          // obj.minternal2 = max(obj.minternal2, double.tryParse(yo['Internal2']));
+          obj.minternal2 = max(obj.minternal2, double.tryParse(yo['Internal2']));
         }
       }
       // Work Done for all users for particular subject
