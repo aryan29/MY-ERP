@@ -72,7 +72,7 @@ void callbackDispatcher() {
       var ios1 = new IOSNotificationDetails();
       var platform = new NotificationDetails(android1, ios1);
       await flutterLocalNotificationsPlugin.show(
-          0, 'Marks updated!', 'Click to check it', platform,
+          0, 'Marks updated!', 'Click here to check it', platform,
           payload: "Anything you say");
     } else if (attendanceNew != attendanceOld && attendanceNew != "") {
       prefs.setString("attendance", attendanceNew);
@@ -82,7 +82,7 @@ void callbackDispatcher() {
       var platform = new NotificationDetails(android1, ios1);
       await flutterLocalNotificationsPlugin.show(
           0,
-          'Attendance updated',
+          'Attendance updated!',
           'Click here to check it',
           platform,
           payload: "Anything you say");
