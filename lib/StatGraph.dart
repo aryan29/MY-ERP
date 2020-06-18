@@ -69,11 +69,18 @@ class _StatGraphState extends State<StatGraph> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            body: Center(
-              child: Container(
-                height:MediaQuery.of(context).size.height*0.6,
-                width:MediaQuery.of(context).size.width*0.8,
-                  child: charts.BarChart(
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.all(10),
+                  child: Text(li.name,style:TextStyle(color:Colors.grey,fontSize: 25,fontWeight: FontWeight.bold))),
+                Center(
+                  child: Container(
+                    height:MediaQuery.of(context).size.height*0.6,
+                    width:MediaQuery.of(context).size.width*0.8,
+                      child: charts.BarChart(
       data,
       behaviors: [new charts.SeriesLegend()],
       animate: true,
@@ -83,6 +90,8 @@ class _StatGraphState extends State<StatGraph> {
       defaultRenderer: charts.BarRendererConfig(
           groupingType: charts.BarGroupingType.grouped, strokeWidthPx: 1.0),
     )),
+                ),
+              ],
             ));
   }
 }

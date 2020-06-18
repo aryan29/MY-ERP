@@ -106,28 +106,24 @@ class _StatsState extends State<Stats> {
     return li;
   }
 
-  InkWell getWidget(int i, List<SubjectStat> li) {
-    return InkWell(
-      onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => StatGraph(obj:li[i])));
-      },
-      child: Container(
+  Container getWidget(int i, List<SubjectStat> li) {
+    return Container(
         height: 400,
-        decoration: BoxDecoration(
+      decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
           border: Border.all(color: Colors.white, width: 5),
+          // color: Colors.blue[100],
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment(
                 0.8, 0.0), // 10% of the width, so there are ten blinds.
             colors: [
-              const Color(0xFFFFFFEE),
-              Colors.blue[300]
+              // Colors.greenAccent,
+              Colors.yellow[400],
+              Colors.yellow[600],
             ], // whitish to gray
             tileMode: TileMode.clamp,
-          ),
-        ),
+          )),
         padding: EdgeInsets.all(10),
         margin: EdgeInsets.all(10),
         child: Column(
@@ -149,9 +145,21 @@ class _StatsState extends State<Stats> {
             Text("Your EndSem Marks:- ${li[i].end}"),
             Text("Average EndSem Marks:- ${li[i].aend.toStringAsFixed(3)}"),
             Text("Maximum EndSem Marks:- ${li[i].mend}"),
+            Container(
+              // margin:EdgeInsets.only(left:10),
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                color:Colors.amber.withOpacity(0.5),
+                onPressed: (){
+        Navigator.push(context,
+              MaterialPageRoute(builder: (context) => StatGraph(obj:li[i])));
+              },
+               child: Text("SHOW GRAPH")
+               ),
+            )
           ],
         ),
-      ),
     );
   }
 
@@ -159,7 +167,7 @@ class _StatsState extends State<Stats> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          decoration: BoxDecoration(color: Colors.black),
+          // decoration: BoxDecoration(color: Colors.black),
           child: FutureBuilder(
             future: retrieve(),
             builder: (context, snapshot) {
@@ -173,18 +181,22 @@ class _StatsState extends State<Stats> {
                     expandedHeight: 150,
                     pinned: true,
                     floating: false,
-                    backgroundColor: Colors.black,
+                        backgroundColor: Colors.indigo,
+                      shape: ContinuousRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(45.0),
+                              bottomRight: Radius.circular(45.0))),
                     flexibleSpace: FlexibleSpaceBar(
                       title: RichText(
                           text: TextSpan(children: [
                         TextSpan(
-                            text: "MY ",
+                            text: "ERP ",
                             style: TextStyle(
                                 color: Colors.blue,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18)),
                         TextSpan(
-                            text: "ERP",
+                            text: "STATS ",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
