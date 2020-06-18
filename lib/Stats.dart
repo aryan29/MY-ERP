@@ -4,6 +4,7 @@ import 'widgets/Model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'dart:math';
+import 'StatGraph.dart';
 
 class Stats extends StatefulWidget {
   Stats({Key key}) : super(key: key);
@@ -31,7 +32,7 @@ class _StatsState extends State<Stats> {
       String name = li[i].name;
       obj.name = name;
 
-      print(name);
+      // print(name);
       database =
           FirebaseDatabase.instance.reference().child("test").child(li[i].name);
       var snapshot = await database.once();
@@ -105,45 +106,51 @@ class _StatsState extends State<Stats> {
     return li;
   }
 
-  Container getWidget(int i, List<SubjectStat> li) {
-    return Container(
-      height: 400,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.0),
-        border: Border.all(color: Colors.white, width: 5),
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end:
-              Alignment(0.8, 0.0), // 10% of the width, so there are ten blinds.
-          colors: [
-            const Color(0xFFFFFFEE),
-            Colors.blue[300]
-          ], // whitish to gray
-          tileMode: TileMode.clamp,
+  InkWell getWidget(int i, List<SubjectStat> li) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => StatGraph(obj:li[i])));
+      },
+      child: Container(
+        height: 400,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.0),
+          border: Border.all(color: Colors.white, width: 5),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment(
+                0.8, 0.0), // 10% of the width, so there are ten blinds.
+            colors: [
+              const Color(0xFFFFFFEE),
+              Colors.blue[300]
+            ], // whitish to gray
+            tileMode: TileMode.clamp,
+          ),
         ),
-      ),
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.all(10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Text("Subject Name:- ${li[i].name}"),
-          Text("Your Internal1 Marks:- ${li[i].internal1}"),
-          Text(
-              "Average Internal1  Marks:- ${li[i].ainternal1.toStringAsFixed(3)}"),
-          Text("Maximum Internal1 Marks:- ${li[i].minternal1}"),
-          Text("Your Midsem Marks:- ${li[i].midsem}"),
-          Text("Average Midsem Marks:- ${li[i].amidsem.toStringAsFixed(3)}"),
-          Text("Maximum Midsem Marks:- ${li[i].mmidsem}"),
-          Text("Your Internal2 Marks:- ${li[i].internal2}"),
-          Text(
-              "Average Inernal2 Marks:- ${li[i].ainternal2.toStringAsFixed(3)}"),
-          Text("Maximum Internal2 Marks:- ${li[i].minternal2}"),
-          Text("Your EndSem Marks:- ${li[i].end}"),
-          Text("Average EndSem Marks:- ${li[i].aend.toStringAsFixed(3)}"),
-          Text("Maximum EndSem Marks:- ${li[i].mend}"),
-        ],
+        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Text("Subject Name:- ${li[i].name}"),
+            Text("Your Internal1 Marks:- ${li[i].internal1}"),
+            Text(
+                "Average Internal1  Marks:- ${li[i].ainternal1.toStringAsFixed(3)}"),
+            Text("Maximum Internal1 Marks:- ${li[i].minternal1}"),
+            Text("Your Midsem Marks:- ${li[i].midsem}"),
+            Text("Average Midsem Marks:- ${li[i].amidsem.toStringAsFixed(3)}"),
+            Text("Maximum Midsem Marks:- ${li[i].mmidsem}"),
+            Text("Your Internal2 Marks:- ${li[i].internal2}"),
+            Text(
+                "Average Inernal2 Marks:- ${li[i].ainternal2.toStringAsFixed(3)}"),
+            Text("Maximum Internal2 Marks:- ${li[i].minternal2}"),
+            Text("Your EndSem Marks:- ${li[i].end}"),
+            Text("Average EndSem Marks:- ${li[i].aend.toStringAsFixed(3)}"),
+            Text("Maximum EndSem Marks:- ${li[i].mend}"),
+          ],
+        ),
       ),
     );
   }
