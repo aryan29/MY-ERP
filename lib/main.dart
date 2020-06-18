@@ -82,8 +82,8 @@ void callbackDispatcher() {
       var platform = new NotificationDetails(android1, ios1);
       await flutterLocalNotificationsPlugin.show(
           0,
-          'Attendance Seem to be changed',
-          'Check out yours new attendance by clicking me',
+          'Attendance updated',
+          'Click here to check it',
           platform,
           payload: "Anything you say");
     }

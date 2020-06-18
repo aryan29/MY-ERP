@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: TextStyle(
                                     color: Colors.indigo,
                                     fontSize: 20.0,
-                                    fontWeight: FontWeight.w400)))),
+                                    fontWeight: FontWeight.w800)))),
                   ),
                   InkWell(
                     onTap: () {
@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: TextStyle(
                                     color: Colors.indigo,
                                     fontSize: 20.0,
-                                    fontWeight: FontWeight.w400)))),
+                                    fontWeight: FontWeight.w800)))),
                   ),
                   InkWell(
                     onTap: () {
@@ -124,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: TextStyle(
                                     color: Colors.indigo,
                                     fontSize: 20.0,
-                                    fontWeight: FontWeight.w400)))),
+                                    fontWeight: FontWeight.w800)))),
                   ),
                 ],
               ),
