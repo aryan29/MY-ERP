@@ -105,7 +105,20 @@ class _StatsState extends State<Stats> {
     }
     return li;
   }
-
+styleText(String a,var b)
+{
+    return Row(
+            children: <Widget>[
+              Text("$a: ",
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+              Expanded(
+                child: Text(
+                  "$b",
+                ),
+              ),
+            ],
+          );
+}
   Container getWidget(int i, List<SubjectStat> li) {
     return Container(
         height: 400,
@@ -130,21 +143,21 @@ class _StatsState extends State<Stats> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Text("Subject Name:- ${li[i].name}"),
-            Text("Your Internal1 Marks:- ${li[i].internal1}"),
-            Text(
-                "Average Internal1  Marks:- ${li[i].ainternal1.toStringAsFixed(3)}"),
-            Text("Maximum Internal1 Marks:- ${li[i].minternal1}"),
-            Text("Your Midsem Marks:- ${li[i].midsem}"),
-            Text("Average Midsem Marks:- ${li[i].amidsem.toStringAsFixed(3)}"),
-            Text("Maximum Midsem Marks:- ${li[i].mmidsem}"),
-            Text("Your Internal2 Marks:- ${li[i].internal2}"),
-            Text(
-                "Average Inernal2 Marks:- ${li[i].ainternal2.toStringAsFixed(3)}"),
-            Text("Maximum Internal2 Marks:- ${li[i].minternal2}"),
-            Text("Your EndSem Marks:- ${li[i].end}"),
-            Text("Average EndSem Marks:- ${li[i].aend.toStringAsFixed(3)}"),
-            Text("Maximum EndSem Marks:- ${li[i].mend}"),
+            styleText("Subject Name",li[i].name),
+            styleText("Your Internal1 Marks",li[i].internal1),
+            styleText(
+                "Average Internal1  Marks",li[i].ainternal1.toStringAsFixed(3)),
+            styleText("Maximum Internal1 Marks",li[i].minternal1),
+            styleText("Your Midsem Marks",li[i].midsem),
+            styleText("Average Midsem Marks",li[i].amidsem.toStringAsFixed(3)),
+            styleText("Maximum Midsem Marks",li[i].mmidsem),
+            styleText("Your Internal2 Marks",li[i].internal2),
+            styleText(
+                "Average Inernal2 Marks",li[i].ainternal2.toStringAsFixed(3)),
+            styleText("Maximum Internal2 Marks",li[i].minternal2),
+            styleText("Your EndSem Marks",li[i].end),
+            styleText("Average EndSem Marks",li[i].aend.toStringAsFixed(3)),
+            styleText("Maximum EndSem Marks",li[i].mend),
             Container(
               // margin:EdgeInsets.only(left:10),
               child: RaisedButton(
