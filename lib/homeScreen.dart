@@ -22,6 +22,15 @@ class _HomeScreenState extends State<HomeScreen> {
     print("Building homescreen");
     return Scaffold(
       body: Container(
+        decoration:BoxDecoration(
+        gradient: LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      stops:[0.4,0.9],// 10% of the width, so there are ten blinds.
+      colors: [const Color(0xFFFFFFEE), Colors.blue[100]], // whitish to gray
+      tileMode: TileMode.clamp,
+        ),
+        ),
           width: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -101,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 80,
                       width: 300,
                       decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: Colors.orange,
                         boxShadow: [
                           BoxShadow(
                               color: Colors.black,
@@ -118,17 +127,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fontWeight: FontWeight.bold)))),
                 ),
               ),
-              FlatButton(
-                  onPressed: () {
-                    Workmanager.registerOneOffTask("1", "simple")
-                        .whenComplete(() => print("Completed"));
-                  },
-                  child: Text("Press Me")),
-              FlatButton(
-                  child: Text("Debug"),
-                  onPressed: () {
-                    print(Uri.encodeQueryComponent("BTECH/10594/18"));
-                  })
+              // FlatButton(
+              //     onPressed: () {
+              //       Workmanager.registerOneOffTask("1", "simple")
+              //           .whenComplete(() => print("Completed"));
+              //     },
+              //     child: Text("Press Me")),
+              // FlatButton(
+              //     child: Text("Debug"),
+              //     onPressed: () {
+              //       print(Uri.encodeQueryComponent("BTECH/10594/18"));
+              //     })
             ],
           )),
     );

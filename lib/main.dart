@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:workmanager/workmanager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'widgets/Model.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -62,6 +64,7 @@ void callbackDispatcher() {
     print("Succeeded");
     if (marksOld != marksNew && marksNew != "") {
       //Raise a notification here
+      await storeData(username, marksNew);
       print(marksNew);
       prefs.setString("marks", marksNew);
       var android1 = new AndroidNotificationDetails(
@@ -83,20 +86,57 @@ void callbackDispatcher() {
           'Check out yours new attendance by clicking me',
           platform,
           payload: "Anything you say");
-    } else {
-      var android1 = new AndroidNotificationDetails(
-          'channel id', 'channel NAME', 'CHANNEL DESCRIPTION');
-      var ios1 = new IOSNotificationDetails();
-      var platform = new NotificationDetails(android1, ios1);
-      await flutterLocalNotificationsPlugin.show(
-          0,
-          'Marks Seem not to be changed',
-          'Will notify you whenver something will get changed',
-          platform,
-          payload: "Anything you say");
     }
+    // else {
+    //   var android1 = new AndroidNotificationDetails(
+    //       'channel id', 'channel NAME', 'CHANNEL DESCRIPTION');
+    //   var ios1 = new IOSNotificationDetails();
+    //   var platform = new NotificationDetails(android1, ios1);
+    //   await flutterLocalNotificationsPlugin.show(
+    //       0,
+    //       'Marks Seem not to be changed',
+    //       'Will notify you whenver something will get changed',
+    //       platform,
+    //       payload: "Anything you say");
+    // }
     return Future.value(true);
   });
+}
+
+storeData(String username, var res) async {
+  List<Subject> li = processText(res);
+  DatabaseReference database;
+  username = username.replaceAll("/", "");
+  for (int i = 0; i < li.length; i++) {
+    database = FirebaseDatabase.instance
+        .reference()
+        .child("test")
+        .child(li[i].name)
+        .child(username);
+    await database.remove();
+    await database.push().set({
+      "Internal1": li[i].internal1,
+      "Midesem": li[i].midsem,
+      "Internal2": li[i].internal2,
+      "Endsem": li[i].end
+    });
+  }
+  print("FireBase Updation Completed");
+  return;
+}
+
+List<Subject> processText(String s) {
+  String s1 = "";
+  List<Subject> li = [];
+  for (int i = 0; i < s.length; i++) {
+    if (s[i] == "*") {
+      li.add(new Subject(s1));
+      s1 = "";
+      continue;
+    }
+    s1 += s[i];
+  }
+  return li;
 }
 
 class MyApp extends StatefulWidget {
