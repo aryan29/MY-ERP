@@ -1,16 +1,25 @@
 # ERPApp
+This is an app made for ERP of BIT Mesra
+for people to easily access their ERP and get notified
+when anything changes
 
-A new Flutter project.
+ ## 📸 ScreenShots
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+| 1 | 2|
+|------|-------|
+|<img src="ReadmeAssets/1.jpeg" width="400"/>|<img src="ReadmeAssets/2.jpeg" width="400"/>|
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+| 3 | 4|
+|------|-------|
+|<img src="ReadmeAssets/3.jpeg" width="400"/>|<img src="ReadmeAssets/4.jpeg" width="400"/>|
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| 5 | 6 |
+|------|-------|
+|<img src="ReadmeAssets/5.jpeg" width="400"/>|<img src="ReadmeAssets/6.jpeg" width="400"/>|
+
+## Features
+* One Time Login And You Can Always Open your ERP
+* Notification on Marks/Attendance Updates
+* Statistical Data of Marks Provides for Each Subject
