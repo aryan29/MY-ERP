@@ -58,6 +58,6 @@ class SubjectStat {
     minternal1 = 0;
     mmidsem = 0;
     minternal2 = 0;
-    mend=0;
+    mend = 0;
   }
 }

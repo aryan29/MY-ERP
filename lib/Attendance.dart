@@ -15,7 +15,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   retrieve() async {
     Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     SharedPreferences prefs = await _prefs;
-     await prefs.reload();
+    await prefs.reload();
     String s = prefs.getString("attendance");
     return {"items": processText(s), "time": prefs.getString("time")};
   }
@@ -37,18 +37,21 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   Container getWidget(int i, List<Subject2> li) {
     return Container(
       decoration: BoxDecoration(
-                  gradient: LinearGradient(
-      begin: Alignment.topLeft,
-      end: Alignment(0.8, 0.0), // 10% of the width, so there are ten blinds.
-      colors: [const Color(0xFFFFFFEE), Colors.blue[300]], // whitish to gray
-      tileMode: TileMode.clamp,
-        ),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment(
+                0.8, 0.0), // 10% of the width, so there are ten blinds.
+            colors: [
+              Colors.yellow[400],
+              Colors.yellow[600],
+            ], // whitish to gray
+            tileMode: TileMode.clamp,
+          ),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(color: Colors.white, width: 5)),
       padding: EdgeInsets.all(10),
       margin: EdgeInsets.all(10),
       child: Column(
-
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Padding(padding: EdgeInsets.all(5.0)),
@@ -134,7 +137,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          color: Colors.black,
+          color: Colors.white,
           //Retrieve Marks from Shared Preferences String
           //And show them here
           child: FutureBuilder(
@@ -142,41 +145,51 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   List<Subject2> li = snapshot.data['items'];
-                  return CustomScrollView(
-                       slivers:[
-                         SliverAppBar(
-                           automaticallyImplyLeading: false,
-                          //  leading: Container(),
-                           iconTheme: IconThemeData(color:Colors.black),
-                           expandedHeight: 150,
-                           pinned:true,
-                           floating: false,
-                           backgroundColor: Colors.black,
-                           flexibleSpace: FlexibleSpaceBar(
-                        title:RichText(
-                             text:TextSpan(children:[
-                               TextSpan(text:"MY ",style:TextStyle(color:Colors.blue,fontWeight: FontWeight.bold,fontSize: 18)),
-                               TextSpan(text:"ERP",style:TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 18)),
-                             ]
-                             )
-
-                           ),
-                           ),
-
-                         ),
-                         SliverList(
+                  return CustomScrollView(slivers: [
+                    SliverAppBar(
+                      automaticallyImplyLeading: false,
+                      //  leading: Container(),
+                      elevation: 40.0,
+                      iconTheme: IconThemeData(color: Colors.black),
+                      expandedHeight: 100,
+                      pinned: true,
+                      floating: false,
+                      backgroundColor: Colors.indigo,
+                      shape: ContinuousRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(45.0),
+                              bottomRight: Radius.circular(45.0))),
+                      flexibleSpace: FlexibleSpaceBar(
+                        title: RichText(
+                            text: TextSpan(children: [
+                          TextSpan(
+                              text: "MY ",
+                              style: TextStyle(
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18)),
+                          TextSpan(
+                              text: "Attendance",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18)),
+                        ])),
+                      ),
+                    ),
+                    SliverList(
                         // crossAxisCount: 1,
                         delegate: SliverChildBuilderDelegate(
-                        // padding: const EdgeInsets.all(10.0),
-                          (context, index) {
-                            return getWidget(index, li);
-                          },
-                          childCount: li.length,
-                        )),
-                       ]
-                  );
+                      // padding: const EdgeInsets.all(10.0),
+                      (context, index) {
+                        return getWidget(index, li);
+                      },
+                      childCount: li.length,
+                    )),
+                  ]);
                 } else {
-                  return Container(child:Center(child: CircularProgressIndicator()));
+                  return Container(
+                      child: Center(child: CircularProgressIndicator()));
                 }
               })),
     );

@@ -21,125 +21,117 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     print("Building homescreen");
     return Scaffold(
-      body: Container(
-        decoration:BoxDecoration(
-        gradient: LinearGradient(
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-      stops:[0.4,0.9],// 10% of the width, so there are ten blinds.
-      colors: [const Color(0xFFFFFFEE), Colors.blue[100]], // whitish to gray
-      tileMode: TileMode.clamp,
-        ),
-        ),
-          width: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              InkWell(
-                onTap: () async {
-                  //Check Button for now
-                  //Will delete everything
-                  // SharedPreferences prefs =
-                  //     await SharedPreferences.getInstance();
-                  // prefs.clear();
-                  // FlutterSecureStorage f = FlutterSecureStorage();
-                  // await f.deleteAll();
-                  // Workmanager.cancelAll();
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => AttendanceScreen()));
-                },
-                child: Card(
-                  child: Container(
-                      height: 80,
-                      width: 300,
-                      decoration: BoxDecoration(
-                          color: Colors.orange,
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.black,
-                                spreadRadius: 1.0,
-                                blurRadius: 5.0)
-                          ],
-                          borderRadius: BorderRadius.circular(10.0)),
-                      child: Center(
-                          child: Text("View Attendance",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.bold)))),
-                ),
+      body: Column(
+        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        // crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          const SizedBox(height: 90),
+          Text(
+            "MY ERP",
+            style: Theme.of(context)
+                .textTheme
+                .headline4
+                .copyWith(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 20),
+          Expanded(
+              child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [
+                    Colors.indigo[900],
+                    Colors.indigo[600],
+                  ]),
+              borderRadius: BorderRadius.only(topRight: Radius.circular(80.0)),
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    height: 50,
+                  ),
+                  InkWell(
+                    onTap: () async {
+                      //Check Button for now
+                      //Will delete everything
+                      // SharedPreferences prefs =
+                      //     await SharedPreferences.getInstance();
+                      // prefs.clear();InkWell
+                      // FlutterSecureStorage f = FlutterSecureStorage();
+                      // await f.deleteAll();
+                      // Workmanager.cancelAll();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AttendanceScreen()));
+                    },
+                    child: Container(
+                        height: 70,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(3.0)),
+                        child: Center(
+                            child: Text("View Attendance",
+                                style: TextStyle(
+                                    color: Colors.indigo,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w400)))),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MarksScreen()));
+                    },
+                    child: Container(
+                        height: 70,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(3),
+                        ),
+                        child: Center(
+                            child: Text("View Marks",
+                                style: TextStyle(
+                                    color: Colors.indigo,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w400)))),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      print("Will take you to stats screen");
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Stats()));
+                    },
+                    splashColor: Colors.grey,
+                    child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        height: 70,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(3),
+                        ),
+                        child: Center(
+                            child: Text("Marks Statistics",
+                                style: TextStyle(
+                                    color: Colors.indigo,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w400)))),
+                  ),
+                ],
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MarksScreen()));
-                },
-                child: Card(
-                  child: Container(
-                      height: 80,
-                      width: 300,
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black,
-                              spreadRadius: 1.0,
-                              blurRadius: 5.0)
-                        ],
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                          child: Text("View Marks",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.bold)))),
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  print("Will take you to stats screen");
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Stats()));
-                },
-                child: Card(
-                  child: Container(
-                      height: 80,
-                      width: 300,
-                      decoration: BoxDecoration(
-                        color: Colors.orange,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black,
-                              spreadRadius: 1.0,
-                              blurRadius: 5.0)
-                        ],
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                          child: Text("See Marks Statistics",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.bold)))),
-                ),
-              ),
-              // FlatButton(
-              //     onPressed: () {
-              //       Workmanager.registerOneOffTask("1", "simple")
-              //           .whenComplete(() => print("Completed"));
-              //     },
-              //     child: Text("Press Me")),
-              // FlatButton(
-              //     child: Text("Debug"),
-              //     onPressed: () {
-              //       print(Uri.encodeQueryComponent("BTECH/10594/18"));
-              //     })
-            ],
+            ),
           )),
+        ],
+      ),
     );
   }
 }

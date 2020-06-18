@@ -32,7 +32,9 @@ class _EntryFieldState extends State<EntryField> {
         decoration: InputDecoration(
             border: InputBorder.none,
             hintStyle: TextStyle(color: Colors.grey.withOpacity(.8)),
-            hintText: (widget.text=="Username")?"${widget.text} (BTECH/10594/18)":widget.text),
+            hintText: (widget.text == "Username")
+                ? "${widget.text} (BTECH/10594/18)"
+                : widget.text),
       ),
     );
   }
