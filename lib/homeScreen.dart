@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
       stops:[0.4,0.9],// 10% of the width, so there are ten blinds.
-      colors: [const Color(0xFFFFFFEE), Colors.black45], // whitish to gray
+      colors: [const Color(0xFFFFFFEE), Colors.blue[100]], // whitish to gray
       tileMode: TileMode.clamp,
         ),
         ),

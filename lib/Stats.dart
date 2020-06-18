@@ -128,16 +128,16 @@ class _StatsState extends State<Stats> {
         children: <Widget>[
           Text("Subject Name:- ${li[i].name}"),
           Text("Your Internal1 Marks:- ${li[i].internal1}"),
-          Text("Average Internal1  Marks:- ${li[i].ainternal1}"),
+          Text("Average Internal1  Marks:- ${li[i].ainternal1.toStringAsFixed(3)}"),
           Text("Maximum Internal1 Marks:- ${li[i].minternal1}"),
           Text("Your Midsem Marks:- ${li[i].midsem}"),
-          Text("Average Midsem Marks:- ${li[i].amidsem}"),
+          Text("Average Midsem Marks:- ${li[i].amidsem.toStringAsFixed(3)}"),
           Text("Maximum Midsem Marks:- ${li[i].mmidsem}"),
           Text("Your Internal2 Marks:- ${li[i].internal2}"),
-          Text("Average Inernal2 Marks:- ${li[i].ainternal2}"),
+          Text("Average Inernal2 Marks:- ${li[i].ainternal2.toStringAsFixed(3)}"),
           Text("Maximum Internal2 Marks:- ${li[i].minternal2}"),
           Text("Your EndSem Marks:- ${li[i].end}"),
-          Text("Average EndSem Marks:- ${li[i].aend}"),
+          Text("Average EndSem Marks:- ${li[i].aend.toStringAsFixed(3)}"),
           Text("Maximum EndSem Marks:- ${li[i].mend}"),
         ],
       ),
@@ -173,10 +173,8 @@ class _StatsState extends State<Stats> {
                                TextSpan(text:"ERP",style:TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 18)),
                              ]
                              )
-
                            ),
                            ),
-
                          ),
                          SliverList(
                         // crossAxisCount: 1,
