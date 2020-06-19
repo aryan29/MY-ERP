@@ -31,19 +31,19 @@ class _StatGraphState extends State<StatGraph> {
     final li1 = [
       MyChart("Internal1", obj.internal1),
       MyChart("MidSem", obj.midsem),
-      MyChart("Internal2", obj.internal1),
+      MyChart("Internal2", obj.internal2),
       MyChart("EndSem", obj.end),
     ];
     final li2 = [
       MyChart("Internal1", obj.ainternal1),
       MyChart("MidSem", obj.amidsem),
-      MyChart("Internal2", obj.ainternal1),
+      MyChart("Internal2", obj.ainternal2),
       MyChart("EndSem", obj.aend),
     ];
     final li3 = [
       MyChart("Internal1", obj.minternal1),
       MyChart("MidSem", obj.mmidsem),
-      MyChart("Internal2", obj.minternal1),
+      MyChart("Internal2", obj.minternal2),
       MyChart("EndSem", obj.mend),
     ];
     return [
